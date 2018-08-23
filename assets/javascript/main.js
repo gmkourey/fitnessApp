@@ -68,19 +68,66 @@ function createChart(fprotein, fcarbs, ffat) {
 // if (BMI >= 18.5 && BMI <= 25) ... = "Normal";
 // if (BMI >= 25 && BMI <= 30) ... = "Obese";
 // if (BMI > 30) ... = "Overweight";
+$('.goal').hover(function () {
+    var id=$(this).attr('id');
+    $('#' + id).css('color', 'grey');
+    switch (id) {
+        case "loseWeight":
+        $('#loseWeightTitle').css('color', 'grey');
+        $('#loseWeightText').css('color', 'grey');
+        $('#loseWeightImg').attr('src', 'assets/images/waist (1).png');
+        break;
 
+        case "buildMuscle":
+        $('#buildMuscleTitle').css('color', 'grey');
+        $('#buildMuscleText').css('color', 'grey');
+        $('#buildMuscleImg').attr('src', 'assets/images/muscle-flex-outline (1).png');
+        break;
+
+        case "getToned":
+        $('#getTonedTitle').css('color', 'grey');
+        $('#getTonedText').css('color', 'grey');
+        $('#getTonedImg').attr('src', 'assets/images/gym (1).png');
+    }
+}, function() {
+    var id=$(this).attr('id');
+    switch (id) {
+        case "loseWeight":
+        $('#loseWeightTitle').css('color', 'black');
+        $('#loseWeightText').css('color', 'black');
+        $('#loseWeightImg').attr('src', 'assets/images/waist.png');
+        break;
+
+        case "buildMuscle":
+        $('#buildMuscleTitle').css('color', 'black');
+        $('#buildMuscleText').css('color', 'black');
+        $('#buildMuscleImg').attr('src', 'assets/images/muscle-flex-outline.png');
+        break;
+
+        case "getToned":
+        $('#getTonedTitle').css('color', 'black');
+        $('#getTonedText').css('color', 'black');
+        $('#getTonedImg').attr('src', 'assets/images/gym.png');
+    }
+})
 $('.goal').on('click', function() {
     $('#goals').css('display', 'none');
     userGoal = $(this).attr('id');
 
     if(userGoal === 'loseWeight') {
-        $('#goalSelected').text('That\'s great, you want to lose weight!');
+        $('.goalsTitle').text('That\'s great, you want to lose weight!');
     } else if (userGoal === 'buildMuscle') {
-        $('#goalSelected').text('That\'s great, you want to buld THICK muscle!');
+        $('.goalsTitle').text('That\'s great, you want to build muscle!');
     } else {
-        $('#goalSelected').text('That\'s great, you want to get toned!')
+        $('.goalsTitle').text('That\'s great, you want to get toned!')
     }
-    $('#form1').css('display', 'block');
+    setTimeout(function() {
+        $('.goals').fadeOut(500);
+    }, 500)
+
+    setTimeout(function() {
+        $('#userInputs').fadeIn(500);
+    }, 1000)
 
 });
 
