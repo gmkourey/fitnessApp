@@ -95,14 +95,21 @@
         </div>
 
 
+<div class="container resultsContainer">
+    <div class="row">
+            <h2 class = "result-titles">Your recommended macronutrient breakdown:</h2>
+        <div class="col-md-4">
 
-                <h2 class = "result-titles">Here is your recommended macronutrient breakdown:</h2>
                 <div id="macroChart">
                         <canvas id="myChart" width="200" height="200"></canvas>
                         <div id="nutrientInfo"></div>
                     </div>
                 <div id="BMIinfo"></div>
-            
+            </div>
+            <div class="col-md-8" id="caloriesBMI">
+                <h3>Your Calories Per Day: <span id="cCount"></span></h3>
+                <h3>Your Current BMI: <span id="BMI"></span></h3>
+            </div> 
         <div id="videos">
             <h2 class = "result-titles">Youtube tutorials related to your fitness goal:</h2>
         </div>
@@ -111,6 +118,7 @@
                 <h2 class = "result-titles">Recipes that suit your macros:</h2>
         </div>
     </div>
+</div>
     <!-- Footer -->
     <footer class="page-footer font-small cyan darken-3">
         </footer>

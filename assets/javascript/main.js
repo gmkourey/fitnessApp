@@ -63,11 +63,6 @@ function createChart(fprotein, fcarbs, ffat) {
     }
     });
 }
-
-// if (BMI < 18.5) = "Underweight";
-// if (BMI >= 18.5 && BMI <= 25) ... = "Normal";
-// if (BMI >= 25 && BMI <= 30) ... = "Obese";
-// if (BMI > 30) ... = "Overweight";
 $('.goal').hover(function () {
     var id=$(this).attr('id');
     $('#' + id).css('color', 'grey');
@@ -131,21 +126,14 @@ $('.goal').on('click', function() {
 
 });
 
-$('#buildMuscle').hover(function () {
-    $('#thicc').text('Build THICC Muscle');
-    }, function() {
-    $('#thicc').text('Build THICK Muscle');
-});
-
 $('#submitInfo').on('click', function(event) { 
-    $('.result-titles').css('display', 'block');
-    $('.container').css('padding-top', '40px');
-    $('#form1').css('display', 'none');
-    $('.goalsContainer').css('display', 'none');
+    $('#userInputs').css('display', 'none');
+    
 
 if ($("#userHeightFeet").val() !== '' && $("#userHeightInches").val() !== '' && $("#userWeight").val() && $("#userSex").val() !== '' && $("#userAge").val() !== '') {    
 event.preventDefault();
 
+$('.resultsContainer').css('display', 'block');
 heightFeetInput = $("#userHeightFeet").val();
 heightInchesInput = $("#userHeightInches").val();
 heightInInches = (parseInt(heightFeetInput) * 12) + parseInt(heightInchesInput);
@@ -197,7 +185,7 @@ switch(activityLevel) {
 };
 
 reeAfter=Math.round(reeAfter);
-$('#BMIinfo').append('<h3>The amount of calories you should be consuming: ' + reeAfter);
+$('#cCount').text(reeAfter);
 switch(userGoal) {
 
     case "loseWeight":
@@ -229,7 +217,16 @@ switch(userGoal) {
 
 reeAfter = Math.round(reeAfter);
 
-$('#BMIinfo').append('<h3>Your curent BMI is: ' + BMI);
+$('#BMI').text(BMI);
+if (BMI <= 18) {
+    $('#BMI').css('color', 'orange');
+} else if (BMI < 25) {
+    $('#BMI').css('color', 'green');
+} else if (BMI < 30) {
+    $('#BMI').css('color', 'yellow');
+} else  {
+    $('#BMI').css('color', 'red');
+}
 $('#BMIinfo').css('display', 'inline-block');
 
 $('#macroChart').css('display', 'inline-block');
@@ -294,7 +291,7 @@ $.ajax({
         recipeDiv.attr('id', 'receipeInfo' + i);
         recipeDiv.attr('class', 'card rounded');
         recipeDiv.attr('style', 'width: 33rem;');
-        recipeDiv.css({'height': '340px', 'margin' : '10px'});
+        recipeDiv.css({'height': '340px', 'margin' : '10px', 'display' : 'inline-block'});
 
         var recipeAnchor = $('<a>')
         recipeAnchor.attr('href', edamamCall[i].recipe.url);
